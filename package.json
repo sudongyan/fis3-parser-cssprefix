@@ -1,0 +1,31 @@
+{
+  "name": "fis3-parser-cssprefix",
+  "version": "0.0.0",
+  "description": "将css文件所在的目录名作为前缀加到class上",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sudongyan/fis3-parser-cssprefix.git"
+  },
+  "keywords": [
+    "fis3"
+  ],
+  "author": {
+    "name": "fis"
+  },
+  "license": "MIT",
+  "readme": "# fis3-preprocessor-cssprefix\n> 为解决组件化开发方式中css命名冲突问题\n\n### fis-conf\n\n```\n// vi fis-conf.js\nfis.match('/components/**.{html,htm,tmpl,less,css,js}', {\n  preprocessor: fis.plugin('cssprefix')\n});\n```\n\n**作用**\n\n上面的fis配置作用在当前项目中名为components的目录下的文件，具体的作用是：\n\n1. css、less文件里所有的class和id名都会加上以文件所在的目录名字串\n2. 会自动为html、htm文件的html标签中的id class for 这三个标签的值加上以文件所在的目录名字串\n3. 会替换js,tmpl文件中的'@NS:'字符为文件所在的目录名字串\n\n**例**\n\n在html文件中如不需要加前缀的时候可以加抑制符\"``@``\"\n\n如 `<div class=\"@title\">标题</div>div>`\n\n编译输出为 `<div class=\"title\">标题</div>div>`\n\ncss、html外的其它文件里，用 @NS: 会被替换为前缀，方便在js里使用。\n```\nvar prefix = \"@NS:\";\n$(\".\" + prefix + \"logo\")\n```\nES6：`$(`.${prefix}logo`)`\n\n",
+  "readmeFilename": "README.md",
+  "gitHead": "26e081037617be6c0639579462de8e7967242c33",
+  "bugs": {
+    "url": "https://github.com/sudongyan/fis3-parser-cssprefix/issues"
+  },
+  "homepage": "https://github.com/sudongyan/fis3-parser-cssprefix",
+  "_id": "fis3-parser-cssprefix@0.0.0",
+  "_shasum": "d93e702f3d0a89702f3b4daa6501cf87231b9f01",
+  "_from": "../devspace/naui/fis3-parser-cssprefix",
+  "_resolved": "file:../devspace/naui/fis3-parser-cssprefix"
+}
